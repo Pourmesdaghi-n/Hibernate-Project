@@ -4,13 +4,19 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class HibernateUtil {
-    private static EntityManagerFactory entityManagerFactory;
+    //    private static EntityManagerFactory mainEntityManagerFactory;
+    private static EntityManagerFactory testEntityManagerFactory;
 
     static {
-        entityManagerFactory = Persistence.createEntityManagerFactory("Unit");
+//        mainEntityManagerFactory = Persistence.createEntityManagerFactory("Unit");
+        testEntityManagerFactory = Persistence.createEntityManagerFactory("Test");
     }
 
-    public static EntityManagerFactory getEntityManagerFactory() {
-        return entityManagerFactory;
+//    public static EntityManagerFactory getMainEntityManagerFactory() {
+//        return mainEntityManagerFactory;
+//    }
+
+    public static EntityManagerFactory getTestEntityManagerFactory() {
+        return testEntityManagerFactory;
     }
 }
