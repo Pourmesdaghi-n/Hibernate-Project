@@ -35,7 +35,9 @@ public abstract class BaseEntityRepositoryImpl<E extends BaseEntity<ID>, ID exte
     @Override
     public List<E> findAll() {
         return entityManager.createQuery(
-                "from " + getEntityClass().getSimpleName(), getEntityClass()).getResultList();
+                "from " + getEntityClass().getSimpleName(),
+                getEntityClass()
+        ).getResultList();
     }
 
     @Override
@@ -47,7 +49,7 @@ public abstract class BaseEntityRepositoryImpl<E extends BaseEntity<ID>, ID exte
     public boolean existsById(ID id) {
         return entityManager.createQuery(
                 "select count (id) from " + getEntityClass().getSimpleName() +
-                        "where id =:id",
+                        " where id = :id",
                 Long.class
         ).setParameter("id", id)
                 .getSingleResult() == 1L;

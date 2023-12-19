@@ -8,7 +8,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.Table;
 import java.time.ZonedDateTime;
 
-@Entity(name = "user")
+@Entity
 @Table(name = User.TABLE_NAME)
 @Inheritance
 public class User extends BaseEntity<Long> {

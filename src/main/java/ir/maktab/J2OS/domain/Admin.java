@@ -3,7 +3,7 @@ package ir.maktab.J2OS.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
-@Entity(name = "admin")
+@Entity
 public class Admin extends User {
     public static final String IS_SUPER_ADMIN = "is_super_admin";
 
