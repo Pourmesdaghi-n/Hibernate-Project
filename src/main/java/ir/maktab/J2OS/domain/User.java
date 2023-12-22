@@ -1,6 +1,10 @@
 package ir.maktab.J2OS.domain;
 
 import ir.maktab.J2OS.base.domain.BaseEntity;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +15,10 @@ import java.time.ZonedDateTime;
 @Entity
 @Table(name = User.TABLE_NAME)
 @Inheritance
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class User extends BaseEntity<Long> {
     public static final String TABLE_NAME = "user_table";
     public static final String FIRST_NAME = "first_name";
@@ -28,7 +36,7 @@ public class User extends BaseEntity<Long> {
     @Column(name = User.LAST_NAME)
     private String lastName;
 
-    @Column(name = User.USER_NAME, unique = true)
+    @Column(name = User.USER_NAME)
     private String userName;
 
     @Column(name = User.PASSWORD)
@@ -46,89 +54,5 @@ public class User extends BaseEntity<Long> {
     @Column(name = User.BIRTHDAY)
     private ZonedDateTime birthday;
 
-    public User() {
-    }
 
-    public User(String firstName, String lastName, String userName, String password, String userType, String mobileNumber, String email, ZonedDateTime birthday) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.userName = userName;
-        this.password = password;
-        this.userType = userType;
-        this.mobileNumber = mobileNumber;
-        this.email = email;
-        this.birthday = birthday;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public User setFirstName(String firstName) {
-        this.firstName = firstName;
-        return this;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public User setLastName(String lastName) {
-        this.lastName = lastName;
-        return this;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public User setUserName(String userName) {
-        this.userName = userName;
-        return this;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public User setPassword(String password) {
-        this.password = password;
-        return this;
-    }
-
-    public String getUserType() {
-        return userType;
-    }
-
-    public User setUserType(String userType) {
-        this.userType = userType;
-        return this;
-    }
-
-    public String getMobileNumber() {
-        return mobileNumber;
-    }
-
-    public User setMobileNumber(String mobileNumber) {
-        this.mobileNumber = mobileNumber;
-        return this;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public User setEmail(String email) {
-        this.email = email;
-        return this;
-    }
-
-    public ZonedDateTime getBirthday() {
-        return birthday;
-    }
-
-    public User setBirthday(ZonedDateTime birthday) {
-        this.birthday = birthday;
-        return this;
-    }
 }

@@ -2,6 +2,10 @@ package ir.maktab.J2OS.domain;
 
 import ir.maktab.J2OS.base.domain.BaseEntity;
 import ir.maktab.J2OS.domain.enumaration.MediaType;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
@@ -10,6 +14,10 @@ import java.util.Set;
 
 @Entity
 @Table(name = Media.TABLE_NAME)
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Media extends BaseEntity<Long> {
     public static final String TABLE_NAME = "media_table";
     public static final String TITLE = "title";
@@ -43,7 +51,7 @@ public class Media extends BaseEntity<Long> {
     @JoinColumn(name = MEDIA_CATEGORY_ID)
     private MediaCategory mediaCategory;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = MEDIA_TAGS, joinColumns = {@JoinColumn(name = MEDIA_ID, referencedColumnName = ID)},
             inverseJoinColumns = {@JoinColumn(name = TAG_ID, referencedColumnName = ID)})
     private Set<Tag> tagSet = new HashSet<>();
@@ -52,96 +60,4 @@ public class Media extends BaseEntity<Long> {
     @JoinColumn(name = USER_ID)
     private User user;
 
-    public Media() {
-    }
-
-    public Media(String title, String context, ZonedDateTime createDate, ZonedDateTime lastUpdateDate, ZonedDateTime publishDate, MediaType mediaType) {
-        this.title = title;
-        this.context = context;
-        this.createDate = createDate;
-        this.lastUpdateDate = lastUpdateDate;
-        this.publishDate = publishDate;
-        this.mediaType = mediaType;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public Media setTitle(String title) {
-        this.title = title;
-        return this;
-    }
-
-    public String getContext() {
-        return context;
-    }
-
-    public Media setContext(String context) {
-        this.context = context;
-        return this;
-    }
-
-    public ZonedDateTime getCreateDate() {
-        return createDate;
-    }
-
-    public Media setCreateDate(ZonedDateTime createDate) {
-        this.createDate = createDate;
-        return this;
-    }
-
-    public ZonedDateTime getLastUpdateDate() {
-        return lastUpdateDate;
-    }
-
-    public Media setLastUpdateDate(ZonedDateTime lastUpdateDate) {
-        this.lastUpdateDate = lastUpdateDate;
-        return this;
-    }
-
-    public ZonedDateTime getPublishDate() {
-        return publishDate;
-    }
-
-    public Media setPublishDate(ZonedDateTime publishDate) {
-        this.publishDate = publishDate;
-        return this;
-    }
-
-    public MediaType getMediaType() {
-        return mediaType;
-    }
-
-    public Media setMediaType(MediaType mediaType) {
-        this.mediaType = mediaType;
-        return this;
-    }
-
-    public MediaCategory getMediaCategory() {
-        return mediaCategory;
-    }
-
-    public Media setMediaCategory(MediaCategory mediaCategory) {
-        this.mediaCategory = mediaCategory;
-        return this;
-    }
-
-    public Set<Tag> getTagSet() {
-        return tagSet;
-    }
-
-    public Media setTagSet(Set<Tag> tagSet) {
-        this.tagSet = tagSet;
-        return this;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public Media setUser(User user) {
-        this.user = user;
-        return this;
-    }
 }
