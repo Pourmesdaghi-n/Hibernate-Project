@@ -17,4 +17,11 @@ public class UserRepositoryImpl extends BaseEntityRepositoryImpl<User, Long>
     public Class<User> getEntityClass() {
         return User.class;
     }
+
+    @Override
+    public User getUserByUserName(String username) {
+        return entityManager.createQuery(
+                "from User u where u.username = :username", User.class
+        ).setParameter("username", username).getSingleResult();
+    }
 }
