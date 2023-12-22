@@ -21,13 +21,20 @@ public class MediaServiceImpl extends BaseEntityServiceImpl<Media, Long, MediaRe
             throw new RuntimeException("access denied !!!");
         }
         if (media.getId() == null) {
-//            repository.getEntityManager().getTransaction().begin();
+            repository.getEntityManager().getTransaction().begin();
             media = repository.save(media);
             media.setUser(currentUser);
-//            repository.getEntityManager().getTransaction().commit();
+            repository.getEntityManager().getTransaction().commit();
             return media;
         } else {
             return super.save(media);
         }
+    }
+
+    @Override
+    public void insert(Media media) {
+        repository.getEntityManager().getTransaction().begin();
+        repository.save(media);
+        repository.getEntityManager().getTransaction().commit();
     }
 }

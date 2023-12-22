@@ -5,4 +5,5 @@ import ir.maktab.J2OS.domain.Media;
 
 public interface MediaService extends BaseEntityService<Media, Long> {
 
+    void insert(Media media);
 }
