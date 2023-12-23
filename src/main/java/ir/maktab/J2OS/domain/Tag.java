@@ -23,4 +23,10 @@ public class Tag extends BaseEntity<Long> {
     @Column(name = TITLE)
     private String title;
 
+    @Override
+    public String toString() {
+        return "Tag{" +
+                "title='" + title + '\'' +
+                '}';
+    }
 }

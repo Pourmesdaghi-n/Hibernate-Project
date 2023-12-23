@@ -19,6 +19,7 @@ public class MainApplication {
         initUser();
         initMediaCategory();
         intMedia();
+
     }
 
     private static void initUser() {

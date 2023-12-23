@@ -60,4 +60,18 @@ public class Media extends BaseEntity<Long> {
     @JoinColumn(name = USER_ID)
     private User user;
 
+    @Override
+    public String toString() {
+        return "Media{" +
+                "title='" + title + '\'' +
+                ", context='" + context + '\'' +
+                ", createDate=" + createDate +
+                ", lastUpdateDate=" + lastUpdateDate +
+                ", publishDate=" + publishDate +
+                ", mediaType=" + mediaType +
+                ", mediaCategory=" + mediaCategory +
+                ", tagSet=" + tagSet +
+                ", user=" + user +
+                '}';
+    }
 }
